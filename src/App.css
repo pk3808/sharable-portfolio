@@ -1,0 +1,514 @@
+/* Common styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+.app {
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for background and text color */
+}
+
+.light {
+  color: black;
+  background: linear-gradient(to bottom, #F7F9F2, #FEECE2);
+}
+
+.dark {
+  background-color: #032903; /* Dark background */
+  color: white; /* Light text */
+}
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('../public/fonts/LED Dot-Matrix.ttf') format('truetype'); /* Adjust format if using other file types */
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Toggle switch styles */
+.theme-toggle-button {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  width: 60px; /* Width of the toggle switch */
+  height: 30px; /* Height of the toggle switch */
+  border-radius: 15px; /* Rounded corners */
+  display: flex; /* Flexbox for positioning */
+  align-items: center; /* Center items vertically */
+  padding: 2px; /* Optional: Add padding to create space around the toggle */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for background color */
+  border: none; /* Remove default border */
+  outline: none; /* Remove outline on focus */
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5); /* Shadow for a 3D effect */
+  z-index: 100; /* Ensure the toggle appears above other elements */
+  box-shadow: inset 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+/* Toggle indicator styles */
+.toggle-indicator {
+  width: 26px; /* Width of the toggle circle */
+  height: 26px; /* Height of the toggle circle */
+  border-radius: 50%; /* Make it circular */
+  background-color: white; /* Circle color */
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5); /* Shadow for a 3D effect */
+  display: flex; /* Flexbox for positioning icon */
+  align-items: center; /* Center icon vertically */
+  justify-content: center; /* Center icon horizontally */
+  transition: transform 0.3s; /* Smooth transition for position */
+  box-shadow: inset 0 4px 16px -1px rgba(214, 230, 4, 0.87), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode styles */
+.dark .theme-toggle-button {
+  background-color: #045106; /* Background color for dark mode switch */
+  box-shadow: inset 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  color: #c11212; /* Text color for dark mode switch */
+  transition: background-color 0.3s; /* Smooth transition for background color */
+
+}
+
+.light .theme-toggle-button {
+  background-color: #eed696 !important; /* Force the background color */
+}
+
+.dark .toggle-indicator {
+  transform: translateX(0px); /* Adjust this value to fit within the button */
+}
+
+/* Optional styles for hover effect */
+.theme-toggle-button:hover {
+  background-color: #7add2e; /* Slightly darker on hover */
+}
+
+/* Icon styles */
+.toggle-indicator svg {
+  height: 1em; /* Set icon size */
+  width: 1em; /* Set icon size */
+  color: inherit; /* Make icon inherit color */
+}
+
+/* Spinning effect */
+.spin {
+  animation: spin 2.5s linear; /* Apply spin animation */
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg); /* Start from 0 degrees */
+  }
+  to {
+    transform: rotate(360deg); /* End at 360 degrees */
+  }
+}
+/* App.css */
+
+.social-icons-desktop {
+  position: fixed;
+  z-index: 50;
+  display: flex;
+  gap: 76px; /* Space between icons */
+  color: inherit; /* Inherit color for dark/light mode */
+  /* border-bottom: #00d45f solid 1px; */
+  padding-left: 30px;
+  padding-right: 55px;
+  /* border-right: #00bcd4 solid 1px; */
+  border-bottom-right-radius: 15px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 2px 12px -1px rgba(235, 91, 91, 0.1), 0 2px 2px -1px rgba(3, 34, 16, 0.4);
+}
+
+.social-icons-desktop a {
+  font-size: 24px; /* Icon size */
+  transition: color 0.3s ease; /* Smooth color transition */
+
+}
+
+.social-icons-desktop a:hover {
+  color: #0ebfff; /* Hover color */
+}
+
+
+.social-icons-mobile {
+  position: fixed;
+  top: 10px; /* Adjust the positioning */
+  left: 10px; /* Adjust the positioning */
+  z-index: 50;
+  
+}
+
+.social-toggle-btn {
+  background-color: #044c18; /* Main button color */
+  color: white; /* Icon color */
+  border: none; /* Remove border */
+  border-radius: 50%; /* Make it round */
+  width: 40px; /* Width of the button */
+  height: 40px; /* Height of the button */
+  display: flex; /* Center the icon */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  position: fixed; /* Fix position */
+  left: 20px; /* Position from left */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Shadow for floating effect */
+  transition: transform 0.2s; /* Smooth hover effect */
+  z-index: 100; /* Ensure it appears above other elements */
+  top:10px
+}
+
+.social-toggle-btn:hover {
+  transform: scale(1.1); /* Slightly increase size on hover */
+}
+
+
+.social-toggle-btn:hover {
+  color: #1cd1b0; /* Change color on hover */
+}
+
+.social-dropdown {
+  position: absolute;
+  top: 55px; /* Adjust dropdown position */
+  left: 0;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between icons */
+}
+
+.social-dropdown a {
+  font-size: 24px; /* Icon size */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.social-dropdown a:hover {
+  color: #00bcd4; 
+} 
+
+/* Dark Mode Styles */
+.dark .social-dropdown {
+  background-color: rgb(3, 41, 3); /* Dark mode background */
+  color: white; /* Dark mode text color */
+}
+
+.dark .social-icons-desktop a:hover {
+  color: rgb(17, 224, 247); /* Dark mode icon color */
+}
+.dark .social-toggle-btn {
+  color: white; /* Dark mode icon color */
+}
+/* Loader.css */
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.fradius{
+  border-radius: 58% 42% 100% 0% / 32% 100% 0% 68% ;
+}
+.loader {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: #4f46e5; /* Customize to your app's theme */
+  border-radius: 50%;
+  animation: bounce 0.6s infinite alternate;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-15px);
+    opacity: 0.5;
+  }
+}
+/* SplashScreen.css */
+.splash-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #03010e; /* Customize for dark/light theme */
+  color: white;
+}
+
+.mode-selection {
+  display: flex;
+  gap: 20px;
+}
+
+.mode-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: #4f46e5;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.mode-button:hover {
+  background-color: #3b3ab9;
+}
+
+/* Fade-in effect */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1.2s ease-out;
+}
+
+/* Swing and bounce effect */
+@keyframes swing-bounce {
+  0% {
+    transform: rotateX(0deg);
+  }
+  25% {
+    transform: rotateX(15deg);
+  }
+  50% {
+    transform: rotateX(0deg);
+  }
+  75% {
+    transform: rotateX(-15deg);
+  }
+  100% {
+    transform: rotateX(0deg) translateY(-4px);
+  }
+}
+
+.animate-swing-bounce {
+  animation: swing-bounce 3s ease-in-out infinite;
+}
+
+/* Button Hover Effect */
+.mode-button {
+  background-color: #5f5de6;
+  color: white;
+  border-radius: 6px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mode-button:hover {
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.sci-fi-border {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 16px;
+  background: #1a1a2e;
+}
+
+.sci-fi-border::before,
+.sci-fi-border::after {
+  content: "";
+  position: absolute;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  top: 10px;
+  left: 10px;
+  border: 2px solid #5f5de6; /* Inner glowing border color */
+  border-radius: 10px;
+  box-shadow: 0 0 6px #5f5de6, 0 0 10px #5f5de6; /* Glow effect */
+  pointer-events: none;
+}
+
+.sci-fi-border::after {
+  top: 15px;
+  left: 15px;
+  width: calc(100% - 30px);
+  height: calc(100% - 30px);
+  border-color: rgba(4, 0, 255, 0.6); /* Lighter inner border */
+  box-shadow: 0 0 6px rgba(104, 99, 201, 0.6);
+}
+.fradius {
+  border-radius: 82% 18% 54% 46% / 19% 15% 85% 81% ;
+}
+canvas {
+  height: 700px !important;
+  width: 100vw !important;
+
+}
+.image-container {
+  perspective: 1000px; /* Adds perspective for the 3D effect */
+}
+
+.image-3d {
+  transform-style: preserve-3d; /* Ensures child elements maintain 3D effect */
+  animation: rotate3d 5s infinite linear; /* Apply the animation */
+}
+
+@keyframes rotate3d {
+  0% {
+    transform: rotateY(0deg) rotateX(0deg); /* Start position */
+  }
+  25% {
+    transform: rotateY(20deg) rotateX(10deg); /* Tilt */
+  }
+  50% {
+    transform: rotateY(0deg) rotateX(20deg); /* Reverse tilt */
+  }
+  75% {
+    transform: rotateY(-20deg) rotateX(-10deg); /* Opposite tilt */
+  }
+  100% {
+    transform: rotateY(0deg) rotateX(0deg); /* Reset position */
+  }
+}
+.animated-border {
+  position: relative;
+  padding: 20px;
+  border-radius: 4px; /* Optional for rounded corners */
+}
+
+.animated-border::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit; /* Match border radius */
+  border: 3px solid transparent; /* Transparent border as base */
+  background: linear-gradient(90deg, #dfc329, #00ffff, #48b807);
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  animation: border-animation 2s linear infinite;
+}
+
+@keyframes border-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+.floating-effect {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0); /* Default position */
+  }
+  50% {
+    transform: translateY(-20px); /* Move up */
+  }
+  100% {
+    transform: translateY(0); /* Back to default position */
+  }
+}
+/* General Floating Effect for Boy */
+.floating-effect {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate-animation {
+  animation: rotate 30s linear infinite; /* Increase duration to slow down */
+}
+
+.floating-effect {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pop-out {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-pop-out {
+  animation: pop-out 1.5s ease-in-out infinite;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
